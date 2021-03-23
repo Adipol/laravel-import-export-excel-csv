@@ -15,11 +15,37 @@ class CreateTransactionsTbl extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->string('name_on_card');
-            $table->string('card_no');
-            $table->string('exp_month');
-            $table->string('exp_year');
-            $table->string('cvv');
+            $table->string('ID_PEP');
+            $table->string('ID_ALL');
+            $table->string('TIPO');
+            $table->string('CODIGO');
+            $table->string('NOMBRE1');
+            $table->string('NOMBRE2');
+            $table->string('APATERNO');
+            $table->string('AMATERNO');
+            $table->string('TIPODOCUMENTO');
+            $table->string('NRODOCUMENTO');
+            $table->string('LEXTENSION');
+            $table->string('ABREVPAIS');
+            $table->string('PAIS');
+            $table->string('DEPARTAMENTO');
+            $table->string('PROVINCIA');
+            $table->string('TIPOPEP');
+            $table->string('PAISCARGO');
+            $table->string('CARGO');
+            $table->string('ENTIDAD');
+            $table->string('GESTION');
+            $table->string('JUSTIFICACION');
+            $table->string('FECHAREPORTE');
+            $table->string('CARGOALL');
+            $table->string('ENTIDADALL');
+            $table->string('JUSTIFICACIONALL');
+            $table->string('TIPOALL');
+            $table->string('TIPOFAM');
+            $table->string('DETALLEALL');
+            $table->string('PROFESION');
+            $table->unsignedBigInteger('ID_REGISTRO');
+
             $table->timestamps();
         });
     }
