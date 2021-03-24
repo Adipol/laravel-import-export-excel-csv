@@ -8,7 +8,7 @@ use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithUpserts;
 
-class TransactionsImport implements ToModel, WithUpserts, WithBatchInserts //, WithChunkReading
+class TransactionsImport implements ToModel, WithUpserts, WithBatchInserts
 {
 
     public function model(array $row)
@@ -49,13 +49,9 @@ class TransactionsImport implements ToModel, WithUpserts, WithBatchInserts //, W
 
     public function batchSize(): int
     {
-        return 5;
+        return 200;
     }
 
-    // public function chunkSize(): int
-    // {
-    //     return 5;
-    // }
 
     public function uniqueBy()
     {
