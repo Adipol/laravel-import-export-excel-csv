@@ -35,7 +35,7 @@ class CreateTransactionsTbl extends Migration
             $table->string('CARGO');
             $table->string('ENTIDAD');
             $table->string('GESTION');
-            $table->string('JUSTIFICACION');
+            $table->text('JUSTIFICACION');
             $table->string('FECHAREPORTE');
             $table->string('CARGOALL');
             $table->string('ENTIDADALL');
@@ -44,7 +44,7 @@ class CreateTransactionsTbl extends Migration
             $table->string('TIPOFAM');
             $table->string('DETALLEALL');
             $table->string('PROFESION');
-            $table->unsignedBigInteger('ID_REGISTRO');
+            $table->string('ID_REGISTRO')->unique();
 
             $table->timestamps();
         });
