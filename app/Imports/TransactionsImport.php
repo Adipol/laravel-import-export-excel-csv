@@ -6,44 +6,45 @@ use App\Models\Transaction;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithUpserts;
 
-class TransactionsImport implements ToModel, WithUpserts, WithBatchInserts
+class TransactionsImport implements ToModel, WithUpserts, WithBatchInserts, WithHeadingRow
 {
 
     public function model(array $row)
     {
         return new Transaction([
-            'ID_PEP'     => $row[0],
-            'ID_ALL'    => $row[1],
-            'TIPO'    => $row[2],
-            'CODIGO'    => $row[3],
-            'NOMBRE1'    => $row[4],
-            'NOMBRE2'    => $row[5],
-            'APATERNO'    => $row[6],
-            'AMATERNO'    => $row[7],
-            'TIPODOCUMENTO'    => $row[8],
-            'NRODOCUMENTO'    => $row[9],
-            'LEXTENSION'    => $row[10],
-            'ABREVPAIS'    => $row[11],
-            'PAIS'    => $row[12],
-            'DEPARTAMENTO'    => $row[13],
-            'PROVINCIA'    => $row[14],
-            'TIPOPEP'    => $row[15],
-            'PAISCARGO'    => $row[16],
-            'CARGO'    => $row[17],
-            'ENTIDAD'    => $row[18],
-            'GESTION'    => $row[19],
-            'JUSTIFICACION'    => $row[20],
-            'FECHAREPORTE'    => $row[21],
-            'CARGOALL'    => $row[22],
-            'ENTIDADALL'    => $row[23],
-            'JUSTIFICACIONALL'    => $row[24],
-            'TIPOALL'    => $row[25],
-            'TIPOFAM'    => $row[26],
-            'DETALLEALL'    => $row[27],
-            'PROFESION'    => $row[28],
-            'ID_REGISTRO'    => $row[29]
+            'ID_PEP'     => $row['id_pep'],
+            'ID_ALL'    => $row['id_all'],
+            'TIPO'    => $row['tipo'],
+            'CODIGO'    => $row['codigo'],
+            'NOMBRE1'    => $row['nombre1'],
+            'NOMBRE2'    => $row['nombre2'],
+            'APATERNO'    => $row['apaterno'],
+            'AMATERNO'    => $row['amaterno'],
+            'TIPODOCUMENTO'    => $row['tipodocumento'],
+            'NRODOCUMENTO'    => $row['nrodocumento'],
+            'LEXTENSION'    => $row['lextension'],
+            'ABREVPAIS'    => $row['abrevpais'],
+            'PAIS'    => $row['pais'],
+            'DEPARTAMENTO'    => $row['departamento'],
+            'PROVINCIA'    => $row['provincia'],
+            'TIPOPEP'    => $row['tipopep'],
+            'PAISCARGO'    => $row['paiscargo'],
+            'CARGO'    => $row['cargo'],
+            'ENTIDAD'    => $row['entidad'],
+            'GESTION'    => $row['gestion'],
+            'JUSTIFICACION'    => $row['justificacion'],
+            'FECHAREPORTE'    => $row['fechareporte'],
+            'CARGOALL'    => $row['cargoall'],
+            'ENTIDADALL'    => $row['entidadall'],
+            'JUSTIFICACIONALL'    => $row['justificacionall'],
+            'TIPOALL'    => $row['tipoall'],
+            'TIPOFAM'    => $row['tipofam'],
+            'DETALLEALL'    => $row['detalleall'],
+            'PROFESION'    => $row['profesion'],
+            'ID_REGISTRO'    => $row['id_registro']
         ]);
     }
 
