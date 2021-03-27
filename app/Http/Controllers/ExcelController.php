@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Exports\TransactionsExport;
 use App\Imports\TransactionsImport;
 use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Validators\Failure;
 
 
 class ExcelController extends Controller
@@ -32,10 +33,21 @@ class ExcelController extends Controller
      */
     public function importExcel(Request $request)
     {
-        Excel::import(new TransactionsImport, $request->import_file);
+        try {
+            Excel::import(new TransactionsImport, $request->import_file);
 
-        \Session::put('success', 'Your file is imported successfully in database.');
+            \Session::put('success', 'Your file is imported successfully in database.');
 
-        return back();
+            return back();
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+            $failures = $e->failures();
+
+            foreach ($failures as $failure) {
+                $failure->row(); // row that went wrong
+                $failure->attribute(); // either heading key (if using heading row concern) or column index
+                $failure->errors(); // Actual error messages from Laravel validator
+                $failure->values(); // The values of the row that has failed.
+            }
+        }
     }
 }

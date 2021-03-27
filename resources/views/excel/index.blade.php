@@ -15,6 +15,11 @@
             <strong>Success!</strong> {{ $message }}
         </div>
         @endif
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
         {!! Session::forget('success') !!}
         <br />
         <h2 class="text-title">Import Export Excel/CSV - LaravelCode</h2>
